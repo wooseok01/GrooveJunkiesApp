@@ -52,7 +52,7 @@
             android:textColorHint="@color/textColor">
 
             <AutoCompleteTextView
-                android:id="@+id/register_stage_name"
+                android:id="@+id/register_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -136,10 +136,11 @@
                     android:background="@color/transparancy" />
 
                 <ImageView
+                    android:id="@+id/user_picture_view"
                     android:layout_width="50sp"
                     android:layout_height="match_parent"
+
                     app:srcCompat="@mipmap/ic_launcher"
-                    android:id="@+id/imageView2"
                     android:layout_weight="1" />
             </LinearLayout>
             <LinearLayout

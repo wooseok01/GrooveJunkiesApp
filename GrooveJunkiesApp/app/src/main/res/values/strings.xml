@@ -19,7 +19,7 @@
 
     <!--회원가입에 사용되는 string-->
     <string name="prompt_register_email">Email you want to use.</string>
-    <string name="prompt_register_dance_name">Write your stage name.</string>
+    <string name="prompt_register_dance_name">Write your name.</string>
     <string name="prompt_password_first">password</string>
     <string name="prompt_password_second">password confirm</string>
     <string name="picture_label_text">Select your picture!</string>

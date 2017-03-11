@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions{
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -27,4 +32,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:design:25.2.0'
     testCompile 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient-android
+    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5'
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.3.6'
+
+
 }
