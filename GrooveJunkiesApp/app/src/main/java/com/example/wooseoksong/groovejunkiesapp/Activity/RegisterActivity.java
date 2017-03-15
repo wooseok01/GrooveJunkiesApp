@@ -1,4 +1,4 @@
-package com.example.wooseoksong.groovejunkiesapp;
+package com.example.wooseoksong.groovejunkiesapp.Activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -19,9 +20,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import com.example.wooseoksong.groovejunkiesapp.BackgroundTask.CheckidBT;
+import com.example.wooseoksong.groovejunkiesapp.BackgroundTask.RegisterBT;
+import com.example.wooseoksong.groovejunkiesapp.HttpClient.HttpClient;
+import com.example.wooseoksong.groovejunkiesapp.R;
+
+import org.json.JSONObject;
 
 /**
  * Created by wooseoksong on 2017. 3. 3..
@@ -104,18 +108,33 @@ public class RegisterActivity extends AppCompatActivity {
                     System.out.println("im in!");
                 }else{
                     System.out.println("im in permission ok!");
-                    HttpClient client = new HttpClient("http://192.168.35.99:8080/appServer/test");
-                    //client.sendRegisterInfo();
-                    RegisterBT rbt =
-                            new RegisterBT(client, email, passwordFirst, name, imagePath, getApplicationContext());
-                    System.out.println("imagePaht -> "+imagePath);
+                    Log.d("email check!","emailCheck!");
 
-                    rbt.execute();
+                    CheckidBT checkidBT =
+                            new CheckidBT("http://192.168.0.107:8080/appServer/checkId", email);
+                    try{
+                        JSONObject jsonObj = checkidBT.execute().get();
+                        if(jsonObj != null && jsonObj.get("result").equals("ok")){
 
-                    //Map<String, String> parameter = new HashMap<String, String>();
-                    //parameter.put("test","test");
+                            RegisterBT registerBT =
+                                    new RegisterBT(
+                                            "http://192.168.0.107:8080/appServer/register",
+                                            email, passwordFirst, name, imagePath);
+                            jsonObj = registerBT.execute().get();
 
+                            if(jsonObj.get("result").equals("success")){
+                                Intent intent = new Intent(thisActivity, LoginActivity.class);
+                                intent.putExtra("result", "registerOk");
+                                startActivity(intent);
+                                finish();
+                            }
 
+                        }else{
+                            Toast.makeText(thisActivity,
+                                    "아이디가 있습니다 다른 아이디로 시도하세요.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }catch(Exception e){e.printStackTrace();}
                 }
             }
         });
@@ -138,7 +157,9 @@ public class RegisterActivity extends AppCompatActivity {
                             HttpClient client = new HttpClient("register");
 
                             RegisterBT rbt =
-                                    new RegisterBT(client, email, passwordFirst, name, imagePath, getApplicationContext());
+                                    new RegisterBT(
+                                            "http://192.168.0.107:8080/appServer/checkId",
+                                            email, passwordFirst, name, imagePath);
                         } else {
                             Toast.makeText(this, "what the...f..",Toast.LENGTH_SHORT).show();
                             return;
