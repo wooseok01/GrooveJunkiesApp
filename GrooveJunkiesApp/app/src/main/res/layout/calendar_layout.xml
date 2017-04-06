@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/buttonLinear">
+
+        <ImageButton
+            android:id="@+id/calendarBtn"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/calendar_icon"
+
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:background="@color/transparancy"
+
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageButton
+            android:id="@+id/mypageBtn"
+            android:layout_width="wrap_content"
+
+            app:srcCompat="@drawable/mypage_icon"
+            android:background="@color/transparancy"
+
+            android:scaleType="centerInside"
+
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageButton
+            android:id="@+id/plusBtn"
+            android:layout_width="wrap_content"
+
+            app:srcCompat="@drawable/information_icon"
+            android:background="@color/transparancy"
+            android:scaleType="centerInside"
+
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp">
+
+        <TextView
+            android:id="@+id/calendarDevideLine"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/colorAccent"
+
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/mypageDevideLine"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/informationDevideLine"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/calendarLayout"
+        android:layout_marginTop="20dp"
+
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calendarState">
+
+            <ImageButton
+                android:layout_width="30dp"
+                app:srcCompat="@drawable/calendar_prev"
+                android:id="@+id/calendarPrevBtn"
+                android:layout_weight="1"
+                android:background="@color/transparancy"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:id="@+id/calendarInfo"
+
+                android:layout_width="200dp"
+                android:layout_height="25dp"
+
+                android:textColor="@color/textColor"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                app:srcCompat="@drawable/calendar_next"
+                android:id="@+id/calendarNextBtn"
+                android:layout_weight="1"
+                android:background="@color/transparancy" />
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/calendarGrid"
+
+            android:layout_width="match_parent"
+
+            android:layout_marginTop="20dp"
+
+            android:numColumns="7"
+
+            android:verticalSpacing="0.5dp"
+            android:background="#ffffff"
+
+            android:stretchMode="columnWidth"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/lastDevider"
+
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/textColor"
+             />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/iconContainer"
+            android:layout_height="match_parent"
+
+            android:layout_weight="6">
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

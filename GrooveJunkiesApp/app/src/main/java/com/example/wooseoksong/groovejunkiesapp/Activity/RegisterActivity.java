@@ -111,14 +111,14 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d("email check!","emailCheck!");
 
                     CheckidBT checkidBT =
-                            new CheckidBT("http://192.168.0.107:8080/appServer/checkId", email);
+                            new CheckidBT("http://192.168.35.99:8080/appServer/checkId", email);
                     try{
                         JSONObject jsonObj = checkidBT.execute().get();
                         if(jsonObj != null && jsonObj.get("result").equals("ok")){
 
                             RegisterBT registerBT =
                                     new RegisterBT(
-                                            "http://192.168.0.107:8080/appServer/register",
+                                            "http://192.168.35.99:8080/appServer/register",
                                             email, passwordFirst, name, imagePath);
                             jsonObj = registerBT.execute().get();
 
@@ -158,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             RegisterBT rbt =
                                     new RegisterBT(
-                                            "http://192.168.0.107:8080/appServer/checkId",
+                                            "http://192.168.35.99:8080/appServer/checkId",
                                             email, passwordFirst, name, imagePath);
                         } else {
                             Toast.makeText(this, "what the...f..",Toast.LENGTH_SHORT).show();

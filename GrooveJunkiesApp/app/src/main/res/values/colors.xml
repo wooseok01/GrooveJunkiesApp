@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="backgroundDark">#000000</color>
     <color name="textColor">#ffffff</color>
-    <color name="loginButtonColor">#4054b2</color>
+    <color name="saturdayColor">#00bdfd</color>
     <color name="transparancy">#00ff0000</color>
+    <color name="notThisMonth">#999999</color>
+    <color name="todayDateColor">#212121</color>
 </resources>

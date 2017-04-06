@@ -54,7 +54,14 @@ public class LoginActivity extends AppCompatActivity {
                 try{
                     JSONObject result = loginBT.execute().get();
                     if(result != null && result.get("result").equals("success")){
-                        Toast.makeText(thisActivity, "로그인 성공!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, CalendarActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else if(result == null){
+                        Toast.makeText(thisActivity, "서버 에러!", Toast.LENGTH_SHORT).show();
+                    }else if(result.get("result").equals("success") != false){
+                        Toast.makeText(thisActivity, "ID 혹은 패스워드가 맞지 않습니다!",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }catch(Exception e){e.printStackTrace();}
             }
